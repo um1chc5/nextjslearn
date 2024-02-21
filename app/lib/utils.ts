@@ -67,3 +67,17 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+// From Bing AI with love
+export function debounce<F extends (...args: any[]) => any>(
+  fn: F,
+  delay = 1000,
+): (...funcArgs: Parameters<F>) => void {
+  let timeoutId: NodeJS.Timeout | null = null;
+  return (...args: Parameters<F>) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+}
