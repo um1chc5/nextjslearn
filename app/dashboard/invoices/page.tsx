@@ -1,5 +1,4 @@
 import Search from '@/app/ui/search';
-import Table from '@/app/ui/invoices/table';
 import { CreateInvoice } from '@/app/ui/invoices/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
@@ -7,6 +6,7 @@ import { Suspense } from 'react';
 import Pagination from '@/app/ui/invoices/pagination';
 import { fetchInvoicesPages } from '@/app/lib/data';
 import { Metadata } from 'next';
+import InvoicesTable from '@/app/ui/invoices/table';
 
 export const metadata: Metadata = {
   title: 'Invoices',
@@ -36,7 +36,7 @@ export default async function Page({
         <CreateInvoice />
       </div>
       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
+        <InvoicesTable query={query} currentPage={currentPage} />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
